@@ -12,6 +12,8 @@ services:
       - "9000"
     environment:
       APP_ENV: dev
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   nginx:
     image: nginx:latest

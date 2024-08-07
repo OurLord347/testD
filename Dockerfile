@@ -3,13 +3,14 @@ FROM php:8.2-fpm
 RUN apt-get update && apt-get install -y \
     libicu-dev \
     libpng-dev \
+    libpq-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     zip \
     unzip \
     git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) intl gd pdo pdo_mysql
+    && docker-php-ext-install -j$(nproc) intl gd pdo pdo_pgsql
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
