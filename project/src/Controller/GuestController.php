@@ -42,7 +42,7 @@ class GuestController extends AbstractController
         return $this->json($guest);
     }
 
-    #[Route('/guest', name: 'create_guest', methods: ['POST'])]
+    #[Route('/guests', name: 'create_guest', methods: ['POST'])]
     public function createGuest(Request $request): JsonResponse
     {
         $data = $request->getContent();
@@ -57,6 +57,7 @@ class GuestController extends AbstractController
 
         return $this->json($guest, 200);
     }
+
     #[Route('/guests/{id}', name: 'update_guest', methods: ['PUT'])]
     public function updateGuest(Request $request, string $id): JsonResponse
     {
@@ -91,6 +92,6 @@ class GuestController extends AbstractController
             return $this->json(['error' => 'Guest not found'], 404);
         }
         $this->guestService->removeGuest($guest);
-        return $this->json(null, 200);
+        return $this->json(null, 204);
     }
 }

@@ -22,7 +22,7 @@ class GuestDto
     #[SerializedName('phone')]
     #[Assert\NotBlank]
     #[Assert\Regex(
-        pattern: '/^\+?\d{1,3}?\-?\(?\d{1,4}?\)?\d{1,4}?\-?\d{1,4}?\-?\d{1,9}$/',
+        pattern: '/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?/',
         message: 'The phone number is not valid'
     )]
     private $phone;
